@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jsx syntax</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .title{
+                background-color: orange;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="test1">
+            
+        </div>
+        <!-- babel means code block is jsx-->
+        <script type="text/babel">
+            // create virtual DOM
+            const myId = 'test2'
+            const myData = 'Hello React'
+            const VDOM = (
+                <div>
+                    <h2 className="title" id={myId.toLocaleLowerCase()}>
+                    <span style={{color:'white', fontSize:'29px'}}>{myData.toLocaleUpperCase()}</span>
+                    </h2>
+                    <h2 className="title" id={myId.toLocaleUpperCase}>
+                        <span style={{color:'white', fontSize:'29px'}}>{myData.toLocaleUpperCase()}</span>
+                    </h2>
+                    <input type='text'/>
+                </div>
+                
+            )
+            // rendering virtual DOM to page
+            ReactDOM.render(VDOM, document.getElementById("test1"))
+            
+            
+        </script>
+    </body>
+</html>

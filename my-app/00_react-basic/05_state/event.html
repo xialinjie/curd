@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script type="text/babel">
+        // create class component
+        class Wether extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {isRaining:false};
+            }
+
+            render(){
+                console.log(this)
+                const {isRaining} = this.state
+                return <h2 onClick={demo}>It's {isRaining ? 'raining' : 'not raining'}</h2>
+                // return <h2>It's {this.state.isRaining ? 'raining' : 'not raining'}</h2>
+            }
+        }
+        // rendering component to page
+        ReactDOM.render(<Wether/>, document.getElementById('test'))
+
+        function demo(){
+            console.log('111');
+        }
+      
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>functional component</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="test1">
+            
+        </div>
+        <!-- babel means code block is jsx-->
+        <script type="text/babel">
+            // create functional component
+            function MyComponent(){
+                console.log(this)
+                return <h2>functional component</h2>
+            }
+
+            // rendering component to page
+            ReactDOM.render(<MyComponent/>, document.getElementById('test1'))
+        </script>
+    </body>
+</html>

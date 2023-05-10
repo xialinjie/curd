@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello React</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="../js/prop-types.js"></script>
+</head>
+
+<body>
+  <div id="test"></div>
+  <script type="text/babel">
+    // create class component
+    class Person extends React.Component {
+      // state = {name:'linjie', gender:'F', age:11}
+      static propTypes = {
+        name: PropTypes.string.isRequired,
+        gender: PropTypes.string,
+        age: PropTypes.number,
+        speak: PropTypes.func,
+      };
+
+      static defaultProps = {
+        gender: "F",
+        age: 22,
+      };
+
+      render() {
+        const { name, gender, age } = this.props;
+        return (
+          <ul>
+            <li>name:{name}</li>
+            <li>gender:{gender}</li>
+            <li>age:{age + 1}</li>
+          </ul>
+        );
+      }
+    }
+
+    function speak() {
+      console.log("hello");
+    }
+
+    // rendering component to page
+    // ReactDOM.render(<Person name="linjie" gender="F" age={11} />, document.getElementById('test'))
+
+    const data = { name: "linjie", gender: "F", age: 11 };
+    //ReactDOM.render(<Person name={data.name} gender={data.gender} age={data.age} />, document.getElementById('test'))
+    ReactDOM.render(
+      <Person {...data} speak={speak} />,
+      document.getElementById("test")
+    );
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello React</title>
+  <!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-dom，用于支持react操作DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel，用于将jsx转为js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <!-- 引入prop-types，用于对组件标签属性进行限制 -->
+  <script type="text/javascript" src="../js/prop-types.js"></script>
+</head>
+
+<body>
+  <div id="test"></div>
+  <script type="text/babel">
+    class Login extends React.Component {
+      state = {
+        username: '',
+        password: ''
+      }
+      showData = (event) => {
+        event.preventDefault();
+        // const {username, password} = this;
+        // alert(`Username is ${username.value}, password is ${password.value}`);
+      }
+      
+      saveForm = (dataType) => {
+        return (event) => (
+            this.setState({[dataType]:event.target.value})
+        )
+      }
+      render() {
+        return (
+          <form action="" onSubmit={this.showData}>
+            username:<input onChange={this.saveForm('username')} type="text" name="username" /><br />
+            password:<input onChange={this.saveForm('password')} type="password" name="password" /><br />
+            <button>login</button>
+          </form>
+        )
+      }
+    }
+
+    ReactDOM.render(<Login />, document.getElementById("test"))
+
+
+  </script>
+
+</body>
+
+</html>

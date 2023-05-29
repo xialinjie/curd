@@ -29,22 +29,22 @@ public class SubjectController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/subjects")
-    public int addSubject(@RequestBody Subject subject){
-        int num = subjectService.addSubject(subject);
-        return num;
+    public String addSubject(@RequestBody Subject subject){
+        String return_id = subjectService.addSubject(subject);
+        return return_id;
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/subjects/{id}")
-    public int updateSubject(@RequestBody Subject subject, @PathVariable String id){
-        int num = subjectService.updateSubject(id, subject);
-        return num;
+    public String updateSubject(@RequestBody Subject subject, @PathVariable String id){
+        String return_id = subjectService.updateSubject(id, subject);
+        return return_id;
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/subjects/{id}")
-    public int deleteSubject(@PathVariable String id){
+    public String deleteSubject(@PathVariable String id){
 
-        int num = subjectService.deleteSubject(id);
-        return num;
+        String return_id = subjectService.deleteSubject(id);
+        return return_id;
     }
 
 }

@@ -29,24 +29,24 @@ public class SubjectService {
 
         return subjectRepository.findById(id).orElse(new Subject());
     }
-    public int addSubject(Subject subject){
+    public String addSubject(Subject subject){
 
-        subjectRepository.save(subject);
+        String id = subjectRepository.save(subject).getId();
 
-        return 1;
+        return id;
     }
-    public int updateSubject(String id, Subject subject){
+    public String updateSubject(String id, Subject subject){
 
         Query query=new Query(Criteria.where("id").is(subject.getId()));
         Update update= new Update().set("name", subject.getName()).set("description", subject.getDescription());
         mongoTemplate.updateFirst(query,update,Subject.class);
-        return 1;
+        return id;
     }
-    public int deleteSubject(String id){
+    public String deleteSubject(String id){
 
         subjectRepository.deleteById(id);
 
-        return 1;
+        return id;
     }
 
 }

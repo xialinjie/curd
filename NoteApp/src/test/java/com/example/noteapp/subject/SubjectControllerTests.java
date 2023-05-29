@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.CoreMatchers.*;
+//import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
@@ -28,30 +29,33 @@ public class SubjectControllerTests {
 
     @Test
     public void getSubjectTest(){
-        String id = "64590b68f7cf423233706732";
+        String id = "64590b68f7cf423233706742";
         Subject subjects = subjectController.getSubject(id);
         assertThat(subjects.getId(), is(id));
+//        assertThat(subjects.getId()).isEqualTo(id);
+
     }
 
     @Test
     public void addSubjectTest(){
         Subject subjects = new Subject("64590b68f7cf423233706742","addtest","add one data");
-        int num = subjectController.addSubject(subjects);
-        assertThat(num, is(flag));
+        String return_id = subjectController.addSubject(subjects);
+
+        assertThat(return_id, is(subjects.getId()));
     }
 
     @Test
     public void updateSubjectTest(){
-        Subject subjects = new Subject("64590b68f7cf423233706732","addtest111","add one data");
-        int num = subjectController.updateSubject(subjects, subjects.getId());
+        Subject subjects = new Subject("64590b68f7cf423233706742","addtest111","add one data");
+        String return_id = subjectController.updateSubject(subjects, subjects.getId());
 
-        assertThat(num, is(flag));
+        assertThat(return_id, not(""));
     }
 
     @Test
     public void deleteSubjectTest(){
         String id = "64590b68f7cf423233706732";
-        int num = subjectController.deleteSubject(id);
-        assertThat(num, is(flag));
+        String return_id = subjectController.deleteSubject(id);
+        assertThat(return_id, not(""));
     }
 }

@@ -41,11 +41,11 @@ public class SubjectService {
         Update update= new Update().set("name", subject.getName()).set("description", subject.getDescription());
         mongoTemplate.updateFirst(query,update,Subject.class);
         return id;
+
     }
     public String deleteSubject(String id){
 
         subjectRepository.deleteById(id);
-
         return id;
     }
 

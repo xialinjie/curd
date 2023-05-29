@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+
 @RestController
 public class SubjectController {
 
@@ -42,10 +44,11 @@ public class SubjectController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/subjects/{id}")
     public String deleteSubject(@PathVariable String id){
-
         String return_id = subjectService.deleteSubject(id);
         return return_id;
     }
+
+
 
 }
 

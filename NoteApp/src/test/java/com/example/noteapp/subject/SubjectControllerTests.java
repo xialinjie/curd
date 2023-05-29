@@ -3,57 +3,55 @@ package com.example.noteapp.subject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.CoreMatchers.*;
+
 
 @SpringBootTest
 public class SubjectControllerTests {
     @Autowired
     private SubjectController subjectController;
 
+    int flag = 1; // 1 = True
 
 
     @Test
     public void getAllSubjectsTest(){
         List<Subject> subjects = subjectController.getAllSubjects();
-        System.out.println("");
 
         for (int i = 0; i < subjects.size(); i++) {
-            Subject subject = subjects.get(i);
-            System.out.println(subject.toString());
+            assertThat(subjects.get(i).getClass(), is(Subject.class));
         }
-        System.out.println("");
+
     }
 
     @Test
     public void getSubjectTest(){
-        String id = "64590b68f7cf423233706728";
+        String id = "64590b68f7cf423233706732";
         Subject subjects = subjectController.getSubject(id);
-        System.out.println("");
-        System.out.println(subjects.toString());
-        System.out.println("");
+        assertThat(subjects.getId(), is(id));
     }
 
     @Test
     public void addSubjectTest(){
-        Subject subjects = new Subject("64590b68f7cf423233706722","addtest","add one data");
+        Subject subjects = new Subject("64590b68f7cf423233706742","addtest","add one data");
         int num = subjectController.addSubject(subjects);
-        System.out.println("");
-        System.out.println(num);
-        System.out.println("");
+        assertThat(num, is(flag));
     }
 
     @Test
     public void updateSubjectTest(){
+        Subject subjects = new Subject("64590b68f7cf423233706732","addtest111","add one data");
+        int num = subjectController.updateSubject(subjects, subjects.getId());
 
+        assertThat(num, is(flag));
     }
 
     @Test
     public void deleteSubjectTest(){
-        String id = "64590b68f7cf423233706722";
+        String id = "64590b68f7cf423233706732";
         int num = subjectController.deleteSubject(id);
-        System.out.println("");
-        System.out.println(num);
-        System.out.println("");
+        assertThat(num, is(flag));
     }
 }

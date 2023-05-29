@@ -29,18 +29,22 @@ public class SubjectController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/subjects")
-    public void addSubject(@RequestBody Subject subject){
-        subjectService.addSubject(subject);
+    public int addSubject(@RequestBody Subject subject){
+        int num = subjectService.addSubject(subject);
+        return num;
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/subjects/{id}")
-    public void updateSubject(@RequestBody Subject subject, @PathVariable String id){
-        subjectService.updateSubject(id, subject);
+    public int updateSubject(@RequestBody Subject subject, @PathVariable String id){
+        int num = subjectService.updateSubject(id, subject);
+        return num;
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/subjects/{id}")
-    public void deleteSubject(@PathVariable String id){
-        subjectService.deleteSubject(id);
+    public int deleteSubject(@PathVariable String id){
+
+        int num = subjectService.deleteSubject(id);
+        return num;
     }
 
 }

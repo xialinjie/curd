@@ -34,7 +34,7 @@ import java.net.URI;
 @RestController()
 public class CalendarController {
 
-    public static final String API_KEY = "AIzaSyBE7v9zj-4JiXQ1_LJgWlG-BuRFvNQQKrE";
+    public static final String API_KEY = "";
     public static final String CALENDAR_ID = "holiday@group.v.calendar.google.com";
     public static final String BASE_CALENDAR_URL = "https://www.googleapis.com/calendar/v3/calendars";
 
